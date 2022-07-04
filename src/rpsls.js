@@ -2,7 +2,10 @@
 
 const choices = ["rock", "paper", "scissors", "lizard", "spock"];
 
-export const playRound = (player1Choice, player2Choice) => {
+export const playRound = (
+  { name: p1Name, choice: p1Choice },
+  { name: p2Name, choice: p2Choice }
+) => {
   const winsAgainst = {
     rock: ["scissors", "lizard"],
     paper: ["rock", "spock"],
@@ -10,17 +13,17 @@ export const playRound = (player1Choice, player2Choice) => {
     lizard: ["paper", "spock"],
     spock: ["rock", "scissors"],
   };
-  if (player1Choice === player2Choice) {
-    return "tie";
-  } else if (winsAgainst[player1Choice].includes(player2Choice)) {
-    return "player1";
+  if (p1Choice === p2Choice) {
+    return { result: "tie", [p1Name]: p1Choice, [p2Name]: p2Choice };
+  } else if (winsAgainst[p1Choice].includes(p2Choice)) {
+    return { result: p1Name, [p1Name]: p1Choice, [p2Name]: p2Choice };
   } else {
-    return "player2";
+    return { result: p2Name, [p1Name]: p1Choice, [p2Name]: p2Choice };
   }
 };
 
-export const playRoundAgainstAI = (playerChoice) => {
+export const playRoundAgainstAI = (playerInfo) => {
   const randomIndex = Math.floor(Math.random() * choices.length);
   const randomChoice = choices[randomIndex];
-  return playRound(playerChoice, randomChoice);
+  return playRound(playerInfo, { name: "computer", choice: randomChoice });
 };
