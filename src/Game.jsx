@@ -12,9 +12,8 @@ const Game = () => {
   const [computerWins, setComputerWins] = useState(0);
   const [ties, setTies] = useState(0);
 
-  const handlePlayerSelection = (e) => {
-    console.log(e.target.value)
-    setPlayerChoice(e.target.value);
+  const handlePlayerSelection = (value) => {
+    setPlayerChoice(value);
   };
 
   const handlePlayRound = () => {
@@ -22,10 +21,8 @@ const Game = () => {
       name: "player1",
       choice: playerChoice,
     });
-    console.log(result)
     setWinner(result.result);
     setRounds(rounds + 1);
-    console.log(result);
     setComputerChoice(result["computer"]);
     if (result.result === "player1") {
       setPlayerWins(playerWins + 1);
@@ -46,7 +43,7 @@ const Game = () => {
     setTies(0);
   };
 
-/*   const options = [
+  /*   const options = [
     { value: "rock", label: "Rock" },
     { value: "paper", label: "Paper" },
     { value: "scissors", label: "Scissors" },
@@ -54,11 +51,23 @@ const Game = () => {
     { value: "spock", label: "Spock" },
   ]; */
   const options = [
-    { value: "rock", label: <img src={require("./rock96.png")} alt="Rock"/> },
-    { value: "paper", label: <img src={require("./paper96.png")} alt="Paper"/> },
-    { value: "scissors", label: <img src={require("./scissors96.png")} alt="Scissors"/> },
-    { value: "lizard", label: <img src={require("./lizard96.png")} alt="Lizard"/> },
-    { value: "spock", label: <img src={require("./spock96.png")} alt="Spock" value="spock" onClick={handlePlayerSelection}/> },
+    { value: "rock", label: <img src={require("./rock96.png")} alt="Rock" /> },
+    {
+      value: "paper",
+      label: <img src={require("./paper96.png")} alt="Paper" />,
+    },
+    {
+      value: "scissors",
+      label: <img src={require("./scissors96.png")} alt="Scissors" />,
+    },
+    {
+      value: "lizard",
+      label: <img src={require("./lizard96.png")} alt="Lizard" />,
+    },
+    {
+      value: "spock",
+      label: <img src={require("./spock96.png")} alt="Spock" />,
+    },
   ];
 
   return (
@@ -81,21 +90,19 @@ const Game = () => {
             <div className="container-selection-title">
               <h1>Computer</h1>
             </div>
-            <ChoiceSelection
-              options={options}
-              handleSelection={()=>{}}
-            />
+            <ChoiceSelection options={options} handleSelection={() => {}} />
           </div>
         </div>
         {!!winner && (
-        <div className="container-result">
-          <div className="container-result-title">
-            <h2>Result</h2>
+          <div className="container-result">
+            <div className="container-result-title">
+              <h2>Result</h2>
+            </div>
+            <div className="container-result-winner">
+              <h2>{winner}</h2>
+            </div>
           </div>
-          <div className="container-result-winner">
-            <h2>{winner}</h2>
-          </div>
-        </div>)}
+        )}
         <div className="container-rounds">
           <div className="container-rounds-title">
             <h2>Rounds</h2>

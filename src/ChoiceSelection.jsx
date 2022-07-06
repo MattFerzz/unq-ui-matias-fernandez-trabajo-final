@@ -1,6 +1,9 @@
 const ChoiceSelection = (props) => {
   const options = props.options;
 
+  const handleClick = (value) => {
+    props.handleSelection(value);
+  };
   return (
     <div className="container-selection-buttons">
       {options.map((option, index) => {
@@ -9,7 +12,7 @@ const ChoiceSelection = (props) => {
             className="container-selection-button"
             key={index}
             value={option.value}
-            onClick={props.handleSelection}
+            onClick={() => handleClick(option.value)}
           >
             {option.label}
           </button>
