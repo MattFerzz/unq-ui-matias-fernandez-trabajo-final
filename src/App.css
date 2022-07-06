@@ -1,0 +1,84 @@
+:root {
+    --lblue: #0393E3;
+    --dark: #202A25;
+  }
+body {
+  background-color: #72CAFD;
+  color: white;
+}
+div[class*="container"] {
+    /* background-color: grey; */
+border-color: white;
+/* border: 10px */
+}
+
+.container-selection {
+  background-color: #36B3FC;
+  border-radius: 10px;
+  width: 80%;
+  height: 40%;
+  border: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.container-selection-player {
+margin: 1em;
+}
+
+.container-selection-title{
+    font-size: large;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-score-score {
+  display: flex;
+  flex-direction: row;
+}
+
+.container-selection-buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+.container-selection-button{
+    border-radius: 50%;
+    border: 0px;
+    font-size: medium;
+    background-color: var(--dark);
+    margin: .25em;
+}
+
+.container-selection-button:hover{
+    background-color: var(--lblue);
+    color: white;
+}
+.container-selection-button:active{
+    background-color: var(--lblue);
+    color: white;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game{
+    width: 100%;
+}
