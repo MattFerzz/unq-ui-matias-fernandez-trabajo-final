@@ -12,10 +12,6 @@ const Game = () => {
   const [computerWins, setComputerWins] = useState(0);
   const [ties, setTies] = useState(0);
 
-  const handlePlayerSelection = (value) => {
-    setPlayerChoice(value);
-  };
-
   const handlePlayRound = () => {
     const result = playRoundAgainstAI({
       name: "player1",
@@ -84,7 +80,7 @@ const Game = () => {
             </div>
             <ChoiceSelection
               options={options}
-              setChoice={handlePlayerSelection}
+              setChoice={setPlayerChoice}
               buttonClass="container-selection-button"
               activeChoice={playerChoice}
             />
