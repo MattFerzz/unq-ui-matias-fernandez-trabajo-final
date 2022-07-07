@@ -1,10 +1,6 @@
-import { useState } from "react";
-const ChoiceSelection = (props) => {
-  const options = props.options;
-  const [active, setActive] = useState(null);
+const ChoiceSelection = ({ options, activeChoice, setChoice, buttonClass }) => {
   const handleClick = (value) => {
-    props.handleSelection(value);
-    setActive(value)
+    setChoice(value);
   };
   return (
     <div className="container-selection-buttons">
@@ -12,9 +8,9 @@ const ChoiceSelection = (props) => {
         return (
           <button
             className={
-              active === option.value
-                ? "container-selection-button active"
-                : "container-selection-button"
+              activeChoice === option.value
+                ? buttonClass + " active"
+                : buttonClass
             }
             key={index}
             value={option.value}

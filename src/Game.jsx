@@ -84,26 +84,31 @@ const Game = () => {
             </div>
             <ChoiceSelection
               options={options}
-              handleSelection={handlePlayerSelection}
+              setChoice={handlePlayerSelection}
+              buttonClass="container-selection-button"
+              activeChoice={playerChoice}
             />
           </div>
           <div className="container-selection-player p2">
             <div className="container-selection-title">
               <h1>Computer</h1>
             </div>
-            <ChoiceSelection options={options} handleSelection={() => {}} />
+            <ChoiceSelection
+              options={options}
+              setChoice={() => {}}
+              buttonClass="container-selection-button disabled"
+              activeChoice={computerChoice}
+            />
           </div>
         </div>
-        {!!winner && (
-          <div className="container-result">
-            <div className="container-result-title">
-              <h2>Result</h2>
-            </div>
-            <div className="container-result-winner">
-              <h2>{winner}</h2>
-            </div>
+        <div className="container-result">
+          <div className="container-result-title">
+            <h2>Result</h2>
           </div>
-        )}
+          <div className="container-result-winner">
+            <h2>{winner}</h2>
+          </div>
+        </div>
         <div className="container-rounds">
           <div className="container-rounds-title">
             <h2>Rounds</h2>
