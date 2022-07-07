@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <div className="container p-2">
+        <div>
           <Routes>
             <Route path="/" element={<ModeSelection />} />
             <Route path="/pve" element={<Game />} />

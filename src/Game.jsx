@@ -43,13 +43,7 @@ const Game = () => {
     setTies(0);
   };
 
-  /*   const options = [
-    { value: "rock", label: "Rock" },
-    { value: "paper", label: "Paper" },
-    { value: "scissors", label: "Scissors" },
-    { value: "lizard", label: "Lizard" },
-    { value: "spock", label: "Spock" },
-  ]; */
+
   const options = [
     { value: "rock", label: <img src={require("./rock96.png")} alt="Rock" /> },
     {
@@ -76,8 +70,8 @@ const Game = () => {
         <div className="container-title">
           <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
         </div>
-        <div className="container-selection flexible">
-          <div className="container-selection-player">
+        <div className="container-selection">
+          <div className="container-selection-player p1">
             <div className="container-selection-title">
               <h1>Player</h1>
             </div>
@@ -86,7 +80,7 @@ const Game = () => {
               handleSelection={handlePlayerSelection}
             />
           </div>
-          <div className="container-selection-player">
+          <div className="container-selection-player p2">
             <div className="container-selection-title">
               <h1>Computer</h1>
             </div>
