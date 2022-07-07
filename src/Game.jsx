@@ -13,6 +13,7 @@ const Game = () => {
   const [ties, setTies] = useState(0);
 
   const handlePlayRound = () => {
+    if (!!playerChoice) {
     const result = playRoundAgainstAI({
       name: "player1",
       choice: playerChoice,
@@ -26,6 +27,9 @@ const Game = () => {
       setComputerWins(computerWins + 1);
     } else {
       setTies(ties + 1);
+    }}
+    else {
+      alert("Please choose before playing!!");
     }
   };
 
