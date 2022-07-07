@@ -43,24 +43,31 @@ const Game = () => {
     setTies(0);
   };
 
-
   const options = [
-    { value: "rock", label: <img src={require("./rock96.png")} alt="Rock" /> },
+    {
+      value: "rock",
+      title: "Rock",
+      label: <img src={require("./rock96.png")} />,
+    },
     {
       value: "paper",
-      label: <img src={require("./paper96.png")} alt="Paper" />,
+      title: "Paper",
+      label: <img src={require("./paper96.png")} />,
     },
     {
       value: "scissors",
-      label: <img src={require("./scissors96.png")} alt="Scissors" />,
+      title: "Scissors",
+      label: <img src={require("./scissors96.png")} />,
     },
     {
       value: "lizard",
-      label: <img src={require("./lizard96.png")} alt="Lizard" />,
+      title: "Lizard",
+      label: <img src={require("./lizard96.png")} />,
     },
     {
       value: "spock",
-      label: <img src={require("./spock96.png")} alt="Spock" />,
+      title: "Spock",
+      label: <img src={require("./spock96.png")} />,
     },
   ];
 

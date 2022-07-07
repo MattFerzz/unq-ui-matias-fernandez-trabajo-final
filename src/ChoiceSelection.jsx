@@ -13,6 +13,7 @@ const ChoiceSelection = (props) => {
             key={index}
             value={option.value}
             onClick={() => handleClick(option.value)}
+            title={option.title}
           >
             {option.label}
           </button>
