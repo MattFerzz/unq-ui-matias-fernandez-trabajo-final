@@ -25,5 +25,5 @@ export const playRound = (
 export const playRoundAgainstAI = (playerInfo) => {
   const randomIndex = Math.floor(Math.random() * choices.length);
   const randomChoice = choices[randomIndex];
-  return playRound(playerInfo, { name: "computer", choice: randomChoice });
+  return playRound(playerInfo, { name: "Computer", choice: randomChoice });
 };
