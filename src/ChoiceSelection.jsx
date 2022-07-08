@@ -1,4 +1,10 @@
-const ChoiceSelection = ({ options, activeChoice, setChoice, buttonClass }) => {
+import { useEffect } from "react";
+const ChoiceSelection = ({
+  options,
+  activeChoice,
+  setChoice,
+  buttonClass,
+}) => {
   const handleClick = (value) => {
     setChoice(value);
   };
