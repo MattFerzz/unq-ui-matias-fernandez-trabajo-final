@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { useState } from "react";
 import { playRoundAgainstAI } from "./rpsls";
 import ChoiceSelection from "./ChoiceSelection";
@@ -6,37 +7,61 @@ import ChoiceSelection from "./ChoiceSelection";
 const Game = () => {
   const [playerChoice, setPlayerChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
-  const [winner, setWinner] = useState("");
+  const [resultInfo, setResultInfo] = useState("");
   const [rounds, setRounds] = useState(0);
   const [playerWins, setPlayerWins] = useState(0);
   const [computerWins, setComputerWins] = useState(0);
   const [ties, setTies] = useState(0);
+  const [resultBox, setResultBox] = useState(<></>);
 
   const handlePlayRound = () => {
     if (!!playerChoice) {
-    const result = playRoundAgainstAI({
-      name: "player1",
-      choice: playerChoice,
-    });
-    setWinner(result.result);
-    setRounds(rounds + 1);
-    setComputerChoice(result["computer"]);
-    if (result.result === "player1") {
-      setPlayerWins(playerWins + 1);
-    } else if (result.result === "computer") {
-      setComputerWins(computerWins + 1);
+      const result = playRoundAgainstAI({
+        name: "Player",
+        choice: playerChoice,
+      });
+      setRounds(rounds + 1);
+      setComputerChoice(result["Computer"]);
+      if (result.result === "Player") {
+        setPlayerWins(playerWins + 1);
+        setResultInfo({
+          message: "🎉 " + result.result + " wins! 🎉",
+          style: "p1",
+        });
+      } else if (result.result === "Computer") {
+        setComputerWins(computerWins + 1);
+        setResultInfo({
+          message: "🤖 " + result.result + " wins 🤖",
+          style: "p2",
+        });
+      } else {
+        setTies(ties + 1);
+        setResultInfo({
+          message: "😯 It's a " + result.result + " 😯",
+          style: "tie",
+        });
+      }
     } else {
-      setTies(ties + 1);
-    }}
-    else {
       alert("Please choose before playing!!");
     }
   };
 
+  useEffect(() => {
+    if (!!resultInfo) {
+      setResultBox(
+        <div className={"container-result " + resultInfo.style}>
+          <h2>{resultInfo.message}</h2>
+        </div>
+      );
+    } else {
+      setResultBox(<></>);
+    }
+  }, [resultInfo]);
+
   const handleResetGame = () => {
     setPlayerChoice("");
     setComputerChoice("");
-    setWinner("");
+    setResultInfo("");
     setRounds(0);
     setPlayerWins(0);
     setComputerWins(0);
@@ -77,6 +102,10 @@ const Game = () => {
         <div className="container-title">
           <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
         </div>
+        <div className="container-round">
+          <h3>Round</h3>
+          <h2 className="no-margin-top">{rounds}</h2>
+        </div>
         <div className="container-selection">
           <div className="container-selection-player p1">
             <div className="container-selection-title">
@@ -98,35 +127,18 @@ const Game = () => {
               setChoice={() => {}}
               buttonClass="container-selection-button disabled"
               activeChoice={computerChoice}
+              animated={true}
             />
           </div>
         </div>
-        <div className="container-result">
-          <div className="container-result-title">
-            <h2>Result</h2>
-          </div>
-          <div className="container-result-winner">
-            <h2>{winner}</h2>
-          </div>
-        </div>
-        <div className="container-rounds">
-          <div className="container-rounds-title">
-            <h2>Rounds</h2>
-          </div>
-          <div className="container-rounds-rounds">
-            <h2>{rounds}</h2>
-          </div>
-        </div>
+        {resultBox}
         <div className="container-score">
-          <div className="container-score-title">
-            <h2>Score</h2>
-          </div>
           <div className="container-score-score">
-            <div className="container-score-score-player">
+            <div className="container-score-counter">
               <h2>Player</h2>
               <h2>{playerWins}</h2>
             </div>
-            <div className="container-ties">
+            <div className="container-score-counter">
               <div className="container-ties-title">
                 <h2>Ties</h2>
               </div>
@@ -134,7 +146,7 @@ const Game = () => {
                 <h2>{ties}</h2>
               </div>
             </div>
-            <div className="container-score-score-computer">
+            <div className="container-score-counter">
               <h2>Computer</h2>
               <h2>{computerWins}</h2>
             </div>
