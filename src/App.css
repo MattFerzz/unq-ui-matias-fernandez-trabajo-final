@@ -1,10 +1,23 @@
 :root {
+/*   --lblue: #0393e3;
+  --dark: #202a25;
+  --p2: #a31621;
+  --p1: #36b3fc;
+  --info: #1ba249;
+  --active: #6644fc; */
   --lblue: #0393e3;
   --dark: #202a25;
+  --p1: #ABC9FF;
+  --p2: #FF8B8B;
+  --info: #AD7FEF;
+  --active: #8B3FF4;
+  --active-border: #4527A0;
+  --tie: grey;
+
 }
 body {
-  background-color: #72cafd;
-  color: white;
+  background-color: #DCCEEF;
+  color: black;
 }
 
 .game {
@@ -27,7 +40,6 @@ body {
 }
 
 .container-selection {
-  background-color: #202a25;
   border-radius: 10px;
   width: 100%;
   height: 100%;
@@ -43,13 +55,13 @@ body {
 .p1 {
   min-width: 15em;
   flex: 1;
-  background-color: #36b3fc;
+  background-color: var(--p1);
 }
 
 .p2 {
   min-width: 15em;
   flex: 1;
-  background-color: #a31621;
+  background-color: var(--p2);
 }
 
 .container-selection-title {
@@ -60,16 +72,8 @@ body {
   justify-content: center;
 }
 
-.container-score {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.container-score-score {
-  display: flex;
-  flex-direction: row;
-}
+
 
 .container-selection-buttons {
   display: flex;
@@ -85,6 +89,7 @@ body {
   font-size: medium;
   background-color: var(--dark);
   margin: 0.25em;
+  cursor: pointer;
 }
 
 .disabled {
@@ -92,10 +97,81 @@ body {
 }
 
 .container-selection-button:hover {
-  background-color: #6644fc;
+  background-color: var(--active);
   color: white;
+  box-shadow: inset 0px 0px 0px 5px var(--active-border);
+
 }
 .active {
-  background-color: #6644fc;
+  background-color: var(--active);
   color: white;
+  box-shadow: inset 0px 0px 0px 5px var(--active-border);
+}
+
+.container-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 30%;
+  margin: 1em;
+}
+
+.container-score {
+  background-color: var(--info);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 50%;
+  margin: 1em;
+}
+
+.horizontal-counter {
+  background-color: var(--info);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  padding: 1em;
+  margin: 1em;
+  height: 4em;
+  overflow: hidden;
+}
+.horizontal-counter-column-title {
+  margin-bottom: 0em;
+  
+}
+
+.horizontal-counter-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin:.75em
+}
+
+.no-margin-top {
+  margin-top: 0;
+}
+
+.tie {
+  background-color: var(--tie);
+}
+
+.button{
+  background-color: var(--info);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  border-width: 0px;
+  overflow: hidden;
+  height: 3.5em;
+  cursor:pointer;
 }
