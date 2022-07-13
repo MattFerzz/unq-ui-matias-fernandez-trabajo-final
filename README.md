@@ -1,6 +1,45 @@
-# Getting Started with Create React App
+# Rock Paper Scissors Lizard Spock
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Correr el juego
+
+Si tu objetivo es simplemente jugar, hay una version online corriendo [aqui](https://mattferzz.github.io/unq-ui-matias-fernandez-trabajo-final/)
+
+## Instalacion Local
+
+Para poder instalar el juego localmente, primero vas a necesitar las siguientes herramientas:
+  
+  * [GIT](https://git-scm.com/downloads)
+  * [NodeJS](https://nodejs.org/es/download/)
+
+Teniendo ambas instaladas podemos continuar
+
+Clonar el repositorio ejecutando:
+
+```bash
+git clone https://github.com/MattFerzz/unq-ui-matias-fernandez-trabajo-final.git
+```
+
+Ingresar a la carpeta clonada ejecutando:
+
+```bash
+cd unq-ui-matias-fernandez-trabajo-final
+```
+
+Instalar las dependencias ejecutando:
+
+```bash
+npm install
+```
+Finalmente correremos el proyecto ejecutando:
+
+```bash
+npm start
+```
+
+El proyecto ahora estara disponible para acceder desde cualquier navegador en http://localhost:3000/
+
+
+
 
 ## Available Scripts
 
