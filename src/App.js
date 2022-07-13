@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ModeSelection from "./components/ModeSelection";
 import Game from "./components/Game";
 import './App.css';
 
@@ -9,9 +8,7 @@ function App() {
       <BrowserRouter>
         <div>
           <Routes>
-            <Route path="/" element={<ModeSelection />} />
-            <Route path="/pve" element={<Game />} />
-            <Route path="/pvp" element={<div/>} />
+            <Route path="/" element={<Game />} />
           </Routes>
         </div>
       </BrowserRouter>
