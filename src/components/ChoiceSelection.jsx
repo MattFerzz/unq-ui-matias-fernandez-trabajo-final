@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import pop from "../assets/pop.m4a";
 const ChoiceSelection = ({
   options,
   activeChoice,
@@ -6,17 +7,21 @@ const ChoiceSelection = ({
   buttonClass,
   animated = false,
 }) => {
+  const popSound = new Audio(pop);
   const [shownActiveChoice, setShownActiveChoice] = useState(activeChoice);
   const [shownIndex, setShownIndex] = useState(0);
   const handleClick = (value) => {
     setChoice(value);
     setShownActiveChoice(value);
   };
+
   
   useEffect(() => {
     if (animated && !activeChoice) {
       const interval = setInterval(() => {
         setShownActiveChoice(options[shownIndex].value);
+        popSound.volume = .05;
+        popSound.play();
         setShownIndex((shownIndex + 1) % options.length);
       }, 500);
       return () => clearInterval(interval);

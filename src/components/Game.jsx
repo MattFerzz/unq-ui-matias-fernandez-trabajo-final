@@ -1,24 +1,30 @@
-import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
-import { playRoundAgainstAI } from "./rpsls";
+import { playRoundAgainstAI } from "../rpsls";
 import ChoiceSelection from "./ChoiceSelection";
 import HorizontalCounter from "./HorizontalCounter";
+import pop from "../assets/pop.m4a";
+import shwank from "../assets/shwank.m4a";
 
 const Game = () => {
+  const popSound = new Audio(pop);
+  const shwankSound = new Audio(shwank);
   const [playerChoice, setPlayerChoice] = useState("");
-  const [computerChoice, setComputerChoice] = useState("");
+  const [player2Choice, setPlayer2Choice] = useState("");
   const [resultInfo, setResultInfo] = useState("");
   const [rounds, setRounds] = useState(0);
   const [playerWins, setPlayerWins] = useState(0);
-  const [computerWins, setComputerWins] = useState(0);
+  const [player2Wins, setPlayer2Wins] = useState(0);
   const [ties, setTies] = useState(0);
   const [resultBox, setResultBox] = useState(<></>);
+  const player2Name = "Computer";
   const [playerButtonClass, setPlayerButtonClass] = useState(
     "container-selection-button"
   );
 
   const handlePlayerChoice = (choice) => {
+    popSound.volume = .05;
+    popSound.play();
     setPlayerChoice(choice);
     setPlayerButtonClass("container-selection-button disabled");
     handlePlayRound(choice);
@@ -30,15 +36,15 @@ const Game = () => {
       choice: choice,
     });
     setRounds(rounds + 1);
-    setComputerChoice(result["Computer"]);
+    setPlayer2Choice(result[player2Name]);
     if (result.result === "Player") {
       setPlayerWins(playerWins + 1);
       setResultInfo({
         message: "🎉 " + result.result + " wins! 🎉",
         style: "p1",
       });
-    } else if (result.result === "Computer") {
-      setComputerWins(computerWins + 1);
+    } else if (result.result === player2Name) {
+      setPlayer2Wins(player2Wins + 1);
       setResultInfo({
         message: "🤖 " + result.result + " wins 🤖",
         style: "p2",
@@ -69,11 +75,13 @@ const Game = () => {
     } else {
       setResultBox(<></>);
     }
-  }, [resultInfo]);
+  },[resultInfo]);
 
   const handleNewRound = () => {
+    shwankSound.volume = .05;
+    shwankSound.play();
     setPlayerChoice("");
-    setComputerChoice("");
+    setPlayer2Choice("");
     setResultInfo("");
     setPlayerButtonClass("container-selection-button");
   };
@@ -81,7 +89,7 @@ const Game = () => {
     handleNewRound();
     setRounds(0);
     setPlayerWins(0);
-    setComputerWins(0);
+    setPlayer2Wins(0);
     setTies(0);
   };
 
@@ -89,27 +97,27 @@ const Game = () => {
     {
       value: "rock",
       title: "Rock",
-      label: <img src={require("./rock96.png")} alt={"Rock"} />,
+      label: <img src={require("../assets/rock96.png")} alt={"Rock"} />,
     },
     {
       value: "paper",
       title: "Paper",
-      label: <img src={require("./paper96.png")} alt={"Paper"} />,
+      label: <img src={require("../assets/paper96.png")} alt={"Paper"} />,
     },
     {
       value: "scissors",
       title: "Scissors",
-      label: <img src={require("./scissors96.png")} alt={"Scissors"} />,
+      label: <img src={require("../assets/scissors96.png")} alt={"Scissors"} />,
     },
     {
       value: "lizard",
       title: "Lizard",
-      label: <img src={require("./lizard96.png")} alt={"Lizard"} />,
+      label: <img src={require("../assets/lizard96.png")} alt={"Lizard"} />,
     },
     {
       value: "spock",
       title: "Spock",
-      label: <img src={require("./spock96.png")} alt={"Spock"} />,
+      label: <img src={require("../assets/spock96.png")} alt={"Spock"} />,
     },
   ];
 
@@ -141,13 +149,13 @@ const Game = () => {
           </div>
           <div className="container-selection-player p2">
             <div className="container-selection-title">
-              <h1>Computer</h1>
+              <h1>{player2Name}</h1>
             </div>
             <ChoiceSelection
               options={options}
               setChoice={() => {}}
               buttonClass="container-selection-button disabled"
-              activeChoice={computerChoice}
+              activeChoice={player2Choice}
               animated={true}
             />
           </div>
@@ -164,8 +172,8 @@ const Game = () => {
               value: ties,
             },
             {
-              title: "Computer",
-              value: computerWins,
+              title: player2Name,
+              value: player2Wins,
             },
           ]}
         />

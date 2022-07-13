@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ModeSelection from "./ModeSelection";
-import Game from "./Game";
+import ModeSelection from "./components/ModeSelection";
+import Game from "./components/Game";
 import './App.css';
 
 function App() {
