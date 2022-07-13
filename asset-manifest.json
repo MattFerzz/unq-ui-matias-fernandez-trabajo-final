@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/unq-ui-matias-fernandez-trabajo-final/static/css/main.94489d85.css",
+    "main.js": "/unq-ui-matias-fernandez-trabajo-final/static/js/main.c3e58b4f.js",
+    "static/media/shwank.m4a": "/unq-ui-matias-fernandez-trabajo-final/static/media/shwank.d35ffbf3a7b4027fdcd4.m4a",
+    "static/media/pop.m4a": "/unq-ui-matias-fernandez-trabajo-final/static/media/pop.74d360d1704707d97e5d.m4a",
+    "index.html": "/unq-ui-matias-fernandez-trabajo-final/index.html",
+    "main.94489d85.css.map": "/unq-ui-matias-fernandez-trabajo-final/static/css/main.94489d85.css.map",
+    "main.c3e58b4f.js.map": "/unq-ui-matias-fernandez-trabajo-final/static/js/main.c3e58b4f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.94489d85.css",
+    "static/js/main.c3e58b4f.js"
+  ]
+}
