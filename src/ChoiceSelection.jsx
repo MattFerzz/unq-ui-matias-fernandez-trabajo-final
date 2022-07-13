@@ -16,7 +16,6 @@ const ChoiceSelection = ({
   useEffect(() => {
     if (animated && !activeChoice) {
       const interval = setInterval(() => {
-        console.log(options[shownIndex])
         setShownActiveChoice(options[shownIndex].value);
         setShownIndex((shownIndex + 1) % options.length);
       }, 500);
