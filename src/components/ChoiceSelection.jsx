@@ -7,7 +7,6 @@ const ChoiceSelection = ({
   buttonClass,
   animated = false,
 }) => {
-  const popSound = new Audio(pop);
   const [shownActiveChoice, setShownActiveChoice] = useState(activeChoice);
   const [shownIndex, setShownIndex] = useState(0);
   const handleClick = (value) => {
@@ -19,6 +18,7 @@ const ChoiceSelection = ({
   useEffect(() => {
     if (animated && !activeChoice) {
       const interval = setInterval(() => {
+        const popSound = new Audio(pop);
         setShownActiveChoice(options[shownIndex].value);
         popSound.volume = .05;
         popSound.play();
@@ -28,7 +28,7 @@ const ChoiceSelection = ({
     } else {
       setShownActiveChoice(activeChoice);
     }
-  });
+  }, [activeChoice, animated, options, shownIndex, setShownActiveChoice]);
 
   return (
     <div className="container-selection-buttons">

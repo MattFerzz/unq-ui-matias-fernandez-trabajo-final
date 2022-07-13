@@ -7,8 +7,6 @@ import pop from "../assets/pop.m4a";
 import shwank from "../assets/shwank.m4a";
 
 const Game = () => {
-  const popSound = new Audio(pop);
-  const shwankSound = new Audio(shwank);
   const [playerChoice, setPlayerChoice] = useState("");
   const [player2Choice, setPlayer2Choice] = useState("");
   const [resultInfo, setResultInfo] = useState("");
@@ -23,6 +21,7 @@ const Game = () => {
   );
 
   const handlePlayerChoice = (choice) => {
+    const popSound = new Audio(pop);
     popSound.volume = .05;
     popSound.play();
     setPlayerChoice(choice);
@@ -78,6 +77,7 @@ const Game = () => {
   },[resultInfo]);
 
   const handleNewRound = () => {
+    const shwankSound = new Audio(shwank);
     shwankSound.volume = .05;
     shwankSound.play();
     setPlayerChoice("");
